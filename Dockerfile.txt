@@ -1,14 +1,20 @@
 FROM openjdk:17
 
-
+# Crear el directorio de trabajo
 WORKDIR /imagenDocker
 
+# Instalar git y clonar el repositorio
+RUN apt-get update && \
+    apt-get install -y git && \
+    git clone https://github.com/zairajazmin/appTerminalDocker.git && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y git RUN git clone https://github.com/zairajazmin/appTerminalDocker.git
-
+# Cambiar al directorio del proyecto
 WORKDIR /imagenDocker/appTerminalDocker
 
+# Compilar el archivo Java
 RUN javac mensajeTerminalDocker/mensajeTerminalDocker.java
 
+# Ejecutar el programa
 CMD ["java", "mensajeTerminalDocker.mensajeTerminalDocker"]
 
