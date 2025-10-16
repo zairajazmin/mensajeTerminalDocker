@@ -3,7 +3,7 @@ FROM openjdk:17-jdk-slim
 # Crear directorio de trabajo
 WORKDIR /imagenDocker
 
-# Instalar git correctamente en Debian
+# Instalar git
 RUN apt-get update && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/*
